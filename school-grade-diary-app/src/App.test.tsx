@@ -7,14 +7,14 @@ test("that jest is working", () => {
   expect(true).toBe(true);
 });
 
-test("render component correctly", async () => {
-  render(<App />);
+// test("render component correctly", async () => {
+//   render(<App />);
 
-  const text = await screen.findByText(
-    "Click on the Vite and React logos to learn more"
-  );
+//   const text = await screen.findByText(
+//     "Click on the Vite and React logos to learn more"
+//   );
 
-  expect(text).toHaveTextContent(
-    "Click on the Vite and React logos to learn more"
-  );
-});
+//   expect(text).toHaveTextContent(
+//     "Click on the Vite and React logos to learn more"
+//   );
+// });
