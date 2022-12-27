@@ -1,5 +1,5 @@
 import { findByText, render, screen } from "@testing-library/react";
-import { Home } from "./Home";
+import { Home } from "./home";
 
 describe("should render home page correctly", () => {
   it("should render correctly", async () => {
