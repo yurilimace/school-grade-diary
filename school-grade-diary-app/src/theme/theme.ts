@@ -21,4 +21,9 @@ export const Theme = {
     xl: "40px",
     xxl: "48px",
   },
+  inputHeight: {
+    sm: "31px",
+    m: "38px",
+    l: "48px",
+  },
 };

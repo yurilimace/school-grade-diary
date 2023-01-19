@@ -6,7 +6,7 @@ export const SidemenuContainer = styled.div<{ startTransition?: boolean }>`
   width: 5%;
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
   transition: width 0.3s linear 0.1s;
-  padding-top: ${({ theme }) => theme.padding.xl};
+  padding-top: ${({ theme }) => theme.padding.xs};
   background-color: ${({ theme }) => theme.color.primary};
   justify-content: start;
 
