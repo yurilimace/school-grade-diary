@@ -1,23 +1,51 @@
-import { fireEvent, render } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { TextInput } from "./TextInput";
 describe("Test TextInputComponent", () => {
   const handleChangeMocked = jest.fn();
   const RenderComponent = () =>
     render(<TextInput label="teste" handleChange={handleChangeMocked} />);
+
   it("should render TextInput Correctly", () => {
-    const { getByText } = RenderComponent();
-    const labelText = getByText("teste");
+    RenderComponent();
+    const labelText = screen.getByText("teste");
     expect(labelText).toBeInTheDocument();
   });
 
   it("should call handleChange Function", () => {
-    const { getByText, getByRole } = RenderComponent();
-    const labelText = getByText("teste");
+    RenderComponent();
+    const labelText = screen.getByText("teste");
     expect(labelText).toBeInTheDocument();
-    const inputField = getByRole("input");
+    const inputField = screen.getByRole("input");
     expect(inputField).toBeInTheDocument;
     fireEvent.click(inputField);
     fireEvent.change(inputField, { target: { value: "a" } });
     expect(handleChangeMocked).toBeCalled();
+  });
+
+  it("should render input as required field on label", () => {
+    const { rerender } = RenderComponent();
+    rerender(
+      <TextInput
+        label="teste"
+        handleChange={handleChangeMocked}
+        requiredField
+      />
+    );
+    const requiredLabelSymbol = screen.getByText("*");
+    expect(requiredLabelSymbol).toBeInTheDocument();
+  });
+  it("should render required field error message", () => {
+    const { rerender } = RenderComponent();
+    rerender(
+      <TextInput
+        label="teste"
+        handleChange={handleChangeMocked}
+        requiredField
+        fieldError
+        errorMessage="Error Message"
+      />
+    );
+    const displayedErrorMessage = screen.getByText("Error Message");
+    expect(displayedErrorMessage).toBeInTheDocument();
   });
 });

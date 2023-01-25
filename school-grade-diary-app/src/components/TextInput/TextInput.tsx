@@ -4,19 +4,13 @@ import {
   FormLabel,
   Input,
   InputGroup,
+  InputProps,
   InputRightElement,
 } from "@chakra-ui/react";
 
 import { RiErrorWarningLine } from "react-icons/ri";
-
-interface TextInputProps {
-  label: string;
-  placeholder?: string;
-  handleChange: (value: string) => void;
-  inputSize?: "xs" | "sm" | "md" | "lg";
-  requiredField?: boolean;
-  fieldError?: boolean;
-}
+import { LoginForm } from "../../types/LoginForm/login-form";
+import { TextInputProps } from "../../types/TextInput/textInput";
 
 export const TextInput = ({
   label,
@@ -25,6 +19,8 @@ export const TextInput = ({
   inputSize,
   requiredField,
   fieldError,
+  errorMessage,
+  ...props
 }: TextInputProps) => {
   const placeholderText = placeholder ? placeholder : "";
   return (
@@ -40,14 +36,16 @@ export const TextInput = ({
           />
         )}
         <Input
+          borderColor={"#b1b7c1"}
           role={"input"}
           size={inputSize}
           placeholder={placeholderText}
-          onChange={(event) => handleChange(event.target.value)}
+          onChange={(event) => handleChange && handleChange(event.target.value)}
+          {...props}
         />
       </InputGroup>
-      {fieldError && requiredField && (
-        <FormErrorMessage> "Error Message" </FormErrorMessage>
+      {fieldError && requiredField && errorMessage && (
+        <FormErrorMessage> {errorMessage} </FormErrorMessage>
       )}
     </FormControl>
   );

@@ -9,6 +9,7 @@ import {
   Input,
 } from "@chakra-ui/react";
 import { TextInput } from "../../components/TextInput/TextInput";
+import { PasswordInput } from "../../components/PasswordInput/PasswordInput";
 
 export const Playground = () => {
   const TextInputHandleChange = (value: string) => {
@@ -27,6 +28,10 @@ export const Playground = () => {
           fieldError
           requiredField
         />
+        <FormControl />
+      </div>
+      <div>
+        <PasswordInput fieldError requiredField label="Teste" />
         <FormControl />
       </div>
     </>

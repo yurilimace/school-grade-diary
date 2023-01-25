@@ -21,6 +21,14 @@ export const Theme = {
     xl: "40px",
     xxl: "48px",
   },
+
+  cardWidth: {
+    sm: "24rem",
+    md: "28rem",
+    lg: "32rem",
+    xl: "36rem",
+  },
+
   inputHeight: {
     sm: "31px",
     m: "38px",
