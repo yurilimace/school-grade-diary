@@ -21,7 +21,6 @@ export const PasswordInput = ({
   inputSize,
   requiredField,
   fieldError,
-  errorMessage,
   ...props
 }: TextInputProps) => {
   const [isInputTypePassword, setIsInputTypePassword] = useState(true);
@@ -41,6 +40,7 @@ export const PasswordInput = ({
             handleChange && handleChange(value)
           }
           type={isInputTypePassword ? "password" : "text"}
+          {...props}
         />
 
         <InputRightElement
@@ -66,8 +66,8 @@ export const PasswordInput = ({
             </>
           }
         />
-        {fieldError && requiredField && errorMessage && (
-          <FormErrorMessage> {errorMessage} </FormErrorMessage>
+        {fieldError && requiredField && (
+          <FormErrorMessage> {fieldError.message} </FormErrorMessage>
         )}
       </InputGroup>
     </FormControl>

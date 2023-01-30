@@ -24,7 +24,7 @@ describe("Password Input UI suite teste", () => {
   });
 
   it("should render input validation error", () => {
-    renderResult.rerender(<PasswordInput requiredField fieldError />);
+    renderResult.rerender(<PasswordInput requiredField />);
     screen.debug();
     const errorIcon = screen.getByTestId("input-field-error-icon");
     expect(errorIcon).toBeInTheDocument();

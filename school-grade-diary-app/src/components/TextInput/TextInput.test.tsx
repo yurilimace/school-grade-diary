@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+import { FieldError } from "react-hook-form";
 import { TextInput } from "./TextInput";
 describe("Test TextInputComponent", () => {
   const handleChangeMocked = jest.fn();
@@ -36,13 +37,16 @@ describe("Test TextInputComponent", () => {
   });
   it("should render required field error message", () => {
     const { rerender } = RenderComponent();
+    const formErrorField: FieldError = {
+      message: "Error Message",
+      type: "value",
+    };
     rerender(
       <TextInput
         label="teste"
         handleChange={handleChangeMocked}
         requiredField
-        fieldError
-        errorMessage="Error Message"
+        fieldError={formErrorField}
       />
     );
     const displayedErrorMessage = screen.getByText("Error Message");

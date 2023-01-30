@@ -10,8 +10,13 @@ import {
 } from "@chakra-ui/react";
 import { TextInput } from "../../components/TextInput/TextInput";
 import { PasswordInput } from "../../components/PasswordInput/PasswordInput";
+import { FieldError } from "react-hook-form";
 
 export const Playground = () => {
+  const formErrorField: FieldError = {
+    message: "Error Message",
+    type: "value",
+  };
   const TextInputHandleChange = (value: string) => {
     console.log(value);
   };
@@ -25,13 +30,13 @@ export const Playground = () => {
           label="teste"
           placeholder="teste de input"
           handleChange={TextInputHandleChange}
-          fieldError
           requiredField
+          fieldError={formErrorField}
         />
         <FormControl />
       </div>
       <div>
-        <PasswordInput fieldError requiredField label="Teste" />
+        <PasswordInput requiredField label="Teste" />
         <FormControl />
       </div>
     </>

@@ -20,7 +20,7 @@ import {
 } from "./login.styles";
 
 export const Login = () => {
-  const { submitForm, control } = useLoginForm();
+  const { submitForm, control, formError } = useLoginForm();
 
   return (
     <LoginPageContainer>
@@ -38,7 +38,12 @@ export const Login = () => {
               name="email"
               control={control}
               render={({ field }) => (
-                <TextInput placeholder="email" {...field} />
+                <TextInput
+                  placeholder="email"
+                  {...field}
+                  fieldError={formError.email}
+                  errorMessage={formError.email?.message}
+                />
               )}
             />
 

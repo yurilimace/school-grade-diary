@@ -19,7 +19,6 @@ export const TextInput = ({
   inputSize,
   requiredField,
   fieldError,
-  errorMessage,
   ...props
 }: TextInputProps) => {
   const placeholderText = placeholder ? placeholder : "";
@@ -44,8 +43,8 @@ export const TextInput = ({
           {...props}
         />
       </InputGroup>
-      {fieldError && requiredField && errorMessage && (
-        <FormErrorMessage> {errorMessage} </FormErrorMessage>
+      {fieldError && requiredField && (
+        <FormErrorMessage> {fieldError.message} </FormErrorMessage>
       )}
     </FormControl>
   );

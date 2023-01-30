@@ -1,4 +1,5 @@
 import { InputProps } from "@chakra-ui/input";
+import { FieldError } from "react-hook-form";
 
 export interface TextInputProps extends InputProps {
   label?: string;
@@ -6,6 +7,5 @@ export interface TextInputProps extends InputProps {
   handleChange?: (value: string) => void;
   inputSize?: "xs" | "sm" | "md" | "lg";
   requiredField?: boolean;
-  fieldError?: boolean;
-  errorMessage?: string;
+  fieldError?: FieldError;
 }
