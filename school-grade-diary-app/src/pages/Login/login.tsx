@@ -10,6 +10,8 @@ import {
 import React from "react";
 import { Controller } from "react-hook-form";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { LoginScrrenIcon } from "../../assets/LoginScreenIcon/loginScreenIcon";
+import { LoginIllustrationOrange } from "../../assets/LoginScreenIcon/LoginScreenIconOrange";
 import { PasswordInput } from "../../components/PasswordInput/PasswordInput";
 import { TextInput } from "../../components/TextInput/TextInput";
 import { useLoginForm } from "./hooks/useLoginForm/useLoginForm";
@@ -24,7 +26,9 @@ export const Login = () => {
 
   return (
     <LoginPageContainer>
-      <IllustrationContainer />
+      <IllustrationContainer>
+        <LoginIllustrationOrange />
+      </IllustrationContainer>
       <FormSection>
         <Card size={"lg"}>
           <CardHeader>
@@ -42,7 +46,6 @@ export const Login = () => {
                   placeholder="email"
                   {...field}
                   fieldError={formError.email}
-                  errorMessage={formError.email?.message}
                 />
               )}
             />
@@ -51,7 +54,11 @@ export const Login = () => {
               name="password"
               control={control}
               render={({ field }) => (
-                <PasswordInput placeholder="senha" {...field} />
+                <PasswordInput
+                  placeholder="senha"
+                  fieldError={formError.password}
+                  {...field}
+                />
               )}
             />
           </CardBody>

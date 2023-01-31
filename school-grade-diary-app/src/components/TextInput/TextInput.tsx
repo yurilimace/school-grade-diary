@@ -23,10 +23,7 @@ export const TextInput = ({
 }: TextInputProps) => {
   const placeholderText = placeholder ? placeholder : "";
   return (
-    <FormControl
-      isRequired={requiredField}
-      isInvalid={fieldError && requiredField}
-    >
+    <FormControl isRequired={requiredField} isInvalid={!!fieldError}>
       <FormLabel> {label} </FormLabel>
       <InputGroup>
         {fieldError && (
@@ -43,7 +40,7 @@ export const TextInput = ({
           {...props}
         />
       </InputGroup>
-      {fieldError && requiredField && (
+      {fieldError && (
         <FormErrorMessage> {fieldError.message} </FormErrorMessage>
       )}
     </FormControl>

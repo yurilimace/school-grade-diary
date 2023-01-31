@@ -16,6 +16,7 @@
     "@chakra-ui/react": "^2.4.9",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@hookform/resolvers": "^2.9.10",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
@@ -30,7 +31,8 @@
     "react-icons": "^4.7.1",
     "react-router-dom": "^6.5.0",
     "styled-components": "^5.3.6",
-    "ts-jest": "^29.0.3"
+    "ts-jest": "^29.0.3",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",

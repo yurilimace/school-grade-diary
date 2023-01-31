@@ -26,10 +26,7 @@ export const PasswordInput = ({
   const [isInputTypePassword, setIsInputTypePassword] = useState(true);
 
   return (
-    <FormControl
-      isRequired={requiredField}
-      isInvalid={fieldError && requiredField}
-    >
+    <FormControl isRequired={requiredField} isInvalid={!!fieldError}>
       <FormLabel> {label} </FormLabel>
       <InputGroup>
         <Input
@@ -66,10 +63,10 @@ export const PasswordInput = ({
             </>
           }
         />
-        {fieldError && requiredField && (
-          <FormErrorMessage> {fieldError.message} </FormErrorMessage>
-        )}
       </InputGroup>
+      {fieldError && (
+        <FormErrorMessage> {fieldError.message} </FormErrorMessage>
+      )}
     </FormControl>
   );
 };

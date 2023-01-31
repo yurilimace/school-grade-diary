@@ -12,9 +12,8 @@ export const IllustrationContainer = styled.div`
 `;
 
 export const FormSection = styled.div`
-  /* display: flex;
-  padding: 8rem 14rem; */
-  padding: 10rem 10rem;
+  margin-right: 4rem;
+  padding: 18rem 15rem;
   width: 50%;
   height: 100%;
 `;
