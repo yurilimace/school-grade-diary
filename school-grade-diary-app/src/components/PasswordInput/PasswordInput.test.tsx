@@ -5,6 +5,7 @@ import {
   screen,
 } from "@testing-library/react";
 import React from "react";
+import { FieldError } from "react-hook-form";
 import { PasswordInput } from "./PasswordInput";
 
 describe("Password Input UI suite teste", () => {
@@ -24,8 +25,13 @@ describe("Password Input UI suite teste", () => {
   });
 
   it("should render input validation error", () => {
-    renderResult.rerender(<PasswordInput requiredField />);
-    screen.debug();
+    const formErrorField: FieldError = {
+      message: "Error Message",
+      type: "value",
+    };
+    renderResult.rerender(
+      <PasswordInput requiredField fieldError={formErrorField} />
+    );
     const errorIcon = screen.getByTestId("input-field-error-icon");
     expect(errorIcon).toBeInTheDocument();
   });
