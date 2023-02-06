@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 
 import { RiErrorWarningLine } from "react-icons/ri";
-import { LoginForm } from "../../types/LoginForm/login-form";
+import { LoginForm } from "../../types/Login/login";
 import { TextInputProps } from "../../types/TextInput/textInput";
 
 export const TextInput = ({
@@ -19,9 +19,11 @@ export const TextInput = ({
   inputSize,
   requiredField,
   fieldError,
+  fowardRef,
   ...props
 }: TextInputProps) => {
   const placeholderText = placeholder ? placeholder : "";
+
   return (
     <FormControl isRequired={requiredField} isInvalid={!!fieldError}>
       <FormLabel> {label} </FormLabel>
@@ -37,6 +39,7 @@ export const TextInput = ({
           size={inputSize}
           placeholder={placeholderText}
           onChange={(event) => handleChange && handleChange(event.target.value)}
+          ref={fowardRef}
           {...props}
         />
       </InputGroup>

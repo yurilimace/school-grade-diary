@@ -8,12 +8,13 @@ import {
   Button,
 } from "@chakra-ui/react";
 import React from "react";
-import { Controller } from "react-hook-form";
+import { Controller, ControllerRenderProps } from "react-hook-form";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { LoginScrrenIcon } from "../../assets/LoginScreenIcon/loginScreenIcon";
 import { LoginIllustrationOrange } from "../../assets/LoginScreenIcon/LoginScreenIconOrange";
 import { PasswordInput } from "../../components/PasswordInput/PasswordInput";
 import { TextInput } from "../../components/TextInput/TextInput";
+import { LoginForm } from "../../types/Login/login";
 import { useLoginForm } from "./hooks/useLoginForm/useLoginForm";
 import {
   FormSection,
@@ -22,7 +23,8 @@ import {
 } from "./login.styles";
 
 export const Login = () => {
-  const { submitForm, control, formError } = useLoginForm();
+  const { loginLoadingRequest, submitForm, control, formError } =
+    useLoginForm();
 
   return (
     <LoginPageContainer>
@@ -39,13 +41,15 @@ export const Login = () => {
           </CardHeader>
           <CardBody paddingTop={"8px"}>
             <Controller
+              shouldUnregister
               name="email"
               control={control}
-              render={({ field }) => (
+              render={({ field: { ref, ...props } }) => (
                 <TextInput
                   placeholder="email"
-                  {...field}
                   fieldError={formError.email}
+                  fowardRef={ref}
+                  {...props}
                 />
               )}
             />
@@ -53,11 +57,12 @@ export const Login = () => {
             <Controller
               name="password"
               control={control}
-              render={({ field }) => (
+              render={({ field: { ref, ...props } }) => (
                 <PasswordInput
                   placeholder="senha"
                   fieldError={formError.password}
-                  {...field}
+                  fowardRef={ref}
+                  {...props}
                 />
               )}
             />
@@ -68,6 +73,8 @@ export const Login = () => {
             justifyContent="space-around"
           >
             <Button
+              isLoading={loginLoadingRequest}
+              loadingText={"Logando ...."}
               onClick={() => submitForm()}
               backgroundColor={"tomato"}
               width={"50%"}

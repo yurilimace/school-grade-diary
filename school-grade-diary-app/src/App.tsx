@@ -6,12 +6,18 @@ import { Router } from "./router/router";
 import { ThemeProvider } from "styled-components";
 import { Theme } from "./theme/theme";
 import { ChakraProvider } from "@chakra-ui/react";
+import { CreateMockServer } from "./services/MockServer";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 function App() {
+  const queryClient = new QueryClient();
+  CreateMockServer();
   return (
     <ThemeProvider theme={Theme}>
       <ChakraProvider>
-        <RouterProvider router={Router} />
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={Router} />
+        </QueryClientProvider>
       </ChakraProvider>
     </ThemeProvider>
   );

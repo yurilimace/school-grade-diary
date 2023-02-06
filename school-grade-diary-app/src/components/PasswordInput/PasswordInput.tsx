@@ -21,6 +21,7 @@ export const PasswordInput = ({
   inputSize,
   requiredField,
   fieldError,
+  fowardRef,
   ...props
 }: TextInputProps) => {
   const [isInputTypePassword, setIsInputTypePassword] = useState(true);
@@ -37,6 +38,7 @@ export const PasswordInput = ({
             handleChange && handleChange(value)
           }
           type={isInputTypePassword ? "password" : "text"}
+          ref={fowardRef}
           {...props}
         />
 

@@ -9,9 +9,15 @@ import {
 import { Login } from "../../login";
 
 import { useLoginForm } from "./useLoginForm";
+import { QueryClient, QueryClientProvider } from "react-query";
 describe("test suite from useLoginForm hook", () => {
+  const Wrapper = ({ children }: { children: React.ReactNode }) => (
+    <QueryClientProvider client={new QueryClient()}>
+      {children}
+    </QueryClientProvider>
+  );
   it("should call on submit form", async () => {
-    const { result } = renderHook(() => useLoginForm());
+    const { result } = renderHook(() => useLoginForm(), { wrapper: Wrapper });
     const submitCalled = jest.spyOn(result.current, "submitForm");
 
     await act(() => {
