@@ -4,10 +4,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useLoginService } from "../../../../services/Login/useLoginServices";
 
 import * as yup from "yup";
+import { redirect, useNavigate } from "react-router-dom";
 
 export const useLoginForm = () => {
   const { mutate: loginMutate, isLoading: loginLoadingRequest } =
     useLoginService();
+
+  const navigator = useNavigate();
 
   const schema = yup.object().shape({
     email: yup
@@ -28,10 +31,18 @@ export const useLoginForm = () => {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<LoginForm>({ resolver: yupResolver(schema) });
+  } = useForm<LoginForm>({
+    resolver: yupResolver(schema),
+    defaultValues: { email: "", password: "" },
+  });
 
   const onSubmit = (data: LoginForm) => {
-    loginMutate(data);
+    loginMutate(data, {
+      onSuccess: (data) => {
+        localStorage.setItem("acessToken", data.token);
+        navigator("/home");
+      },
+    });
 
     return data;
   };

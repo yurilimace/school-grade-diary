@@ -1,6 +1,7 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { Server } from "miragejs";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { BrowserRouter } from "react-router-dom";
 
 import { CreateMockServer } from "../../services/MockServer";
 import { Login } from "./login";
@@ -8,7 +9,7 @@ import { Login } from "./login";
 describe("login screen tests", () => {
   const Wrapper = ({ children }: { children: React.ReactNode }) => (
     <QueryClientProvider client={new QueryClient()}>
-      {children}
+      <BrowserRouter>{children}</BrowserRouter>
     </QueryClientProvider>
   );
   const RenderComponent = () => render(<Login />, { wrapper: Wrapper });

@@ -10,10 +10,11 @@ import { Login } from "../../login";
 
 import { useLoginForm } from "./useLoginForm";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { BrowserRouter, Router } from "react-router-dom";
 describe("test suite from useLoginForm hook", () => {
   const Wrapper = ({ children }: { children: React.ReactNode }) => (
     <QueryClientProvider client={new QueryClient()}>
-      {children}
+      <BrowserRouter>{children}</BrowserRouter>
     </QueryClientProvider>
   );
   it("should call on submit form", async () => {

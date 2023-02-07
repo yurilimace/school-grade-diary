@@ -6,11 +6,20 @@ import { RouterContainer } from "../components/RouteContainer/routeContainer";
 import { Home } from "../pages/Home/home";
 import { Login } from "../pages/Login/login";
 import { Playground } from "../pages/Playground/playground";
+import { ProtectedRoute } from "./ProtectedRoute/ProtectedRoute";
 
 export const Router = createBrowserRouter([
   {
-    path: "/",
-    element: <RouterContainer render={() => <Home />} />,
+    path: "/home",
+    element: (
+      <RouterContainer
+        render={() => (
+          <ProtectedRoute>
+            <Home />
+          </ProtectedRoute>
+        )}
+      />
+    ),
   },
   {
     path: "/playground",
