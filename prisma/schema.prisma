@@ -13,4 +13,13 @@ datasource db {
 model StudendClass {
   id String  @unique @default(uuid())
   name String @default("")
+  students Student[]
+}
+
+model Student {
+  id String @unique @default(uuid())
+  name String
+  age Int
+  StudentClass StudendClass @relation(fields: [studentClassId],references: [id])
+  studentClassId String
 }
