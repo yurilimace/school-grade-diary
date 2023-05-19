@@ -1,20 +1,10 @@
-import { GraphQLObjectType, GraphQLSchema, GraphQLString } from 'graphql';
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 
-const customType = new GraphQLObjectType({
-  name: 'teste',
-  fields: {
-    message: { type: GraphQLString, resolve: () => 'hello world' },
-  },
-});
-
-const customSchema = new GraphQLSchema({
-  query: customType,
-});
+import { rootSchema } from './schemas/rootSchema';
 
 const StartApolloServer = async () => {
-  const server = new ApolloServer({ schema: customSchema });
+  const server = new ApolloServer({ schema: rootSchema });
 
   const { url } = await startStandaloneServer(server, {
     listen: { port: 4000 },
