@@ -11,7 +11,6 @@ export const StudentRepository = (prisma: PrismaClient) => {
     const result = await prisma.student.findMany({
       where: { name: name },
     });
-    console.log('result', result, name);
     return result;
   };
 
