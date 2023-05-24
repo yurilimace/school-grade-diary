@@ -14,6 +14,7 @@ model StudendClass {
   id String  @unique @default(uuid())
   name String @default("")
   students Student[]
+  Tests Test[]
 }
 
 model Student {
@@ -22,4 +23,22 @@ model Student {
   age Int
   StudentClass StudendClass @relation(fields: [studentClassId],references: [id])
   studentClassId String
+}
+
+model Test {
+  id String @unique @default(uuid())
+  title String
+  description String?
+  maxScore Int
+  subject SchoolSubject
+  StudentClass StudendClass @relation(fields: [studentClassId],references: [id])
+  studentClassId String
+
+}
+
+enum SchoolSubject {
+  Math
+  History
+  Geography
+  Portuguese
 }
