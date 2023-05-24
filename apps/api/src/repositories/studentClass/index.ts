@@ -2,7 +2,9 @@ import { PrismaClient } from '@prisma/client';
 
 export const StudentClassRepository = (prisma: PrismaClient) => {
   const GetAll = async () => {
-    const result = await prisma.studendClass.findMany();
+    const result = await prisma.studendClass.findMany({
+      include: { students: true },
+    });
 
     return result;
   };
