@@ -5,6 +5,8 @@ import { StudentQuery } from './Student/query';
 import { StudentMutation } from './Student/mutation';
 import { TestQuery } from './Test/query';
 import { TestMutation } from './Test/mutation';
+import { StudentScoreQuery } from './StudentScore/query';
+import { StudentScoreMutation } from './StudentScore/mutation';
 
 const rootQuery = new GraphQLObjectType({
   name: 'rootQuery',
@@ -12,6 +14,7 @@ const rootQuery = new GraphQLObjectType({
     ...StudentClassQuery.toConfig().fields,
     ...StudentQuery.toConfig().fields,
     ...TestQuery.toConfig().fields,
+    ...StudentScoreQuery.toConfig().fields,
   },
 });
 
@@ -21,6 +24,7 @@ const rootMutation = new GraphQLObjectType({
     ...StudentClassMutations.toConfig().fields,
     ...StudentMutation.toConfig().fields,
     ...TestMutation.toConfig().fields,
+    ...StudentScoreMutation.toConfig().fields,
   },
 });
 

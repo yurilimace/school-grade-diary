@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model StudendClass {
+model StudentClass {
   id String  @unique @default(uuid())
   name String @default("")
   students Student[]
@@ -21,8 +21,9 @@ model Student {
   id String @unique @default(uuid())
   name String
   age Int
-  StudentClass StudendClass @relation(fields: [studentClassId],references: [id])
+  StudentClass StudentClass @relation(fields: [studentClassId],references: [id])
   studentClassId String
+  studentScore StudentScore[]
 }
 
 model Test {
@@ -31,9 +32,20 @@ model Test {
   description String?
   maxScore Int
   subject SchoolSubject
-  StudentClass StudendClass @relation(fields: [studentClassId],references: [id])
+  StudentClass StudentClass @relation(fields: [studentClassId],references: [id])
   studentClassId String
+  studentScore StudentScore[]
 
+}
+
+
+model StudentScore {
+  id String @unique @default(uuid())
+  test Test @relation(fields: [testId],references: [id])
+  testId String
+  student Student @relation(fields: [studentId],references: [id])
+  studentId String
+  score Decimal @db.Decimal(10,1)
 }
 
 enum SchoolSubject {
