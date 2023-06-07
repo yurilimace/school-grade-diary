@@ -14,3 +14,10 @@ export type Test = {
   subject: SchoolSubject;
   studentClassId: string;
 };
+
+export type StudentScore = {
+  id?: string;
+  studentId: string;
+  testId: string;
+  score: number;
+};

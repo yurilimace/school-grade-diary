@@ -13,7 +13,7 @@ export const StudentQuery = new GraphQLObjectType({
       resolve: async (parent, args, context) => {
         const { FindByName } = StudentUseCases();
         const response = await FindByName(args.name);
-        return response;
+        return response[0];
       },
     },
   },
